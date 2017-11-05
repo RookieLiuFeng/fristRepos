@@ -1,0 +1,137 @@
+2017-11-02 17:21:44.635 [main] INFO  o.s.t.c.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-11-02 17:21:44.753 [main] INFO  o.s.t.c.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4e41089d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@32a068d1, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@33cb5951, org.springframework.test.context.support.DirtiesContextTestExecutionListener@365c30cc, org.springframework.test.context.transaction.TransactionalTestExecutionListener@701fc37a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4148db48]
+2017-11-02 17:21:45.526 [main] INFO  o.s.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-11-02 17:21:48.198 [main] INFO  o.s.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@7bb58ca3: startup date [Thu Nov 02 17:21:48 CST 2017]; root of context hierarchy
+2017-11-02 17:21:49.391 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+2017-11-02 17:21:49.404 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.2.14.Final}
+2017-11-02 17:21:49.407 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2017-11-02 17:21:49.409 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2017-11-02 17:21:50.083 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2017-11-02 17:21:50.097 [main] INFO  o.hibernate.engine.jdbc.internal.LobCreatorBuilder - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2017-11-02 17:21:50.475 [main] INFO  o.h.e.t.internal.TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-11-02 17:21:50.490 [main] INFO  o.h.hql.internal.ast.ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+2017-11-02 17:21:50.491 [main] WARN  org.hibernate.cfg.SettingsFactory - Unrecognized value for "hibernate.hbm2ddl.auto": none
+2017-11-02 17:21:50.578 [main] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 4.3.1.Final
+2017-11-02 17:21:52.724 [Thread-5] INFO  o.s.context.support.GenericApplicationContext - Closing org.springframework.context.support.GenericApplicationContext@7bb58ca3: startup date [Thu Nov 02 17:21:48 CST 2017]; root of context hierarchy
+2017-11-02 17:25:48.959 [main] INFO  o.s.t.c.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-11-02 17:25:48.985 [main] INFO  o.s.t.c.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4e41089d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@32a068d1, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@33cb5951, org.springframework.test.context.support.DirtiesContextTestExecutionListener@365c30cc, org.springframework.test.context.transaction.TransactionalTestExecutionListener@701fc37a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4148db48]
+2017-11-02 17:25:49.153 [main] INFO  o.s.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-11-02 17:25:50.035 [main] INFO  o.s.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@7bb58ca3: startup date [Thu Nov 02 17:25:50 CST 2017]; root of context hierarchy
+2017-11-02 17:25:51.602 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+2017-11-02 17:25:51.608 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.2.14.Final}
+2017-11-02 17:25:51.610 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2017-11-02 17:25:51.612 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2017-11-02 17:25:52.212 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2017-11-02 17:25:52.231 [main] INFO  o.hibernate.engine.jdbc.internal.LobCreatorBuilder - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2017-11-02 17:25:52.496 [main] INFO  o.h.e.t.internal.TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-11-02 17:25:52.503 [main] INFO  o.h.hql.internal.ast.ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+2017-11-02 17:25:52.511 [main] WARN  org.hibernate.cfg.SettingsFactory - Unrecognized value for "hibernate.hbm2ddl.auto": none
+2017-11-02 17:25:52.565 [main] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 4.3.1.Final
+2017-11-02 17:25:54.275 [Thread-5] INFO  o.s.context.support.GenericApplicationContext - Closing org.springframework.context.support.GenericApplicationContext@7bb58ca3: startup date [Thu Nov 02 17:25:50 CST 2017]; root of context hierarchy
+2017-11-02 17:29:22.174 [main] INFO  o.s.t.c.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-11-02 17:29:22.192 [main] INFO  o.s.t.c.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4e41089d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@32a068d1, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@33cb5951, org.springframework.test.context.support.DirtiesContextTestExecutionListener@365c30cc, org.springframework.test.context.transaction.TransactionalTestExecutionListener@701fc37a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4148db48]
+2017-11-02 17:29:22.297 [main] INFO  o.s.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-11-02 17:29:23.176 [main] INFO  o.s.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@7bb58ca3: startup date [Thu Nov 02 17:29:23 CST 2017]; root of context hierarchy
+2017-11-02 17:29:24.688 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+2017-11-02 17:29:24.694 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.2.14.Final}
+2017-11-02 17:29:24.696 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2017-11-02 17:29:24.698 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2017-11-02 17:29:25.312 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2017-11-02 17:29:25.325 [main] INFO  o.hibernate.engine.jdbc.internal.LobCreatorBuilder - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2017-11-02 17:29:25.610 [main] INFO  o.h.e.t.internal.TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-11-02 17:29:25.617 [main] INFO  o.h.hql.internal.ast.ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+2017-11-02 17:29:25.618 [main] WARN  org.hibernate.cfg.SettingsFactory - Unrecognized value for "hibernate.hbm2ddl.auto": none
+2017-11-02 17:29:25.669 [main] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 4.3.1.Final
+2017-11-02 17:29:27.327 [Thread-5] INFO  o.s.context.support.GenericApplicationContext - Closing org.springframework.context.support.GenericApplicationContext@7bb58ca3: startup date [Thu Nov 02 17:29:23 CST 2017]; root of context hierarchy
+2017-11-02 17:36:46.571 [main] INFO  o.s.t.c.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-11-02 17:36:46.593 [main] INFO  o.s.t.c.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4e41089d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@32a068d1, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@33cb5951, org.springframework.test.context.support.DirtiesContextTestExecutionListener@365c30cc, org.springframework.test.context.transaction.TransactionalTestExecutionListener@701fc37a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4148db48]
+2017-11-02 17:36:46.739 [main] INFO  o.s.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-11-02 17:36:48.438 [main] INFO  o.s.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@7bb58ca3: startup date [Thu Nov 02 17:36:48 CST 2017]; root of context hierarchy
+2017-11-02 17:36:49.388 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+2017-11-02 17:36:49.394 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.2.14.Final}
+2017-11-02 17:36:49.397 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2017-11-02 17:36:49.399 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2017-11-02 17:36:49.969 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2017-11-02 17:36:49.979 [main] INFO  o.hibernate.engine.jdbc.internal.LobCreatorBuilder - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2017-11-02 17:36:50.265 [main] INFO  o.h.e.t.internal.TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-11-02 17:36:50.273 [main] INFO  o.h.hql.internal.ast.ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+2017-11-02 17:36:50.284 [main] WARN  org.hibernate.cfg.SettingsFactory - Unrecognized value for "hibernate.hbm2ddl.auto": none
+2017-11-02 17:36:50.346 [main] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 4.3.1.Final
+2017-11-02 17:36:52.017 [Thread-5] INFO  o.s.context.support.GenericApplicationContext - Closing org.springframework.context.support.GenericApplicationContext@7bb58ca3: startup date [Thu Nov 02 17:36:48 CST 2017]; root of context hierarchy
+2017-11-02 17:39:44.694 [main] INFO  o.s.t.c.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-11-02 17:39:44.717 [main] INFO  o.s.t.c.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4e41089d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@32a068d1, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@33cb5951, org.springframework.test.context.support.DirtiesContextTestExecutionListener@365c30cc, org.springframework.test.context.transaction.TransactionalTestExecutionListener@701fc37a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4148db48]
+2017-11-02 17:39:44.794 [main] INFO  o.s.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-11-02 17:39:45.409 [main] INFO  o.s.context.support.GenericApplicationContext - Refreshing org.springframework.context.support.GenericApplicationContext@7bb58ca3: startup date [Thu Nov 02 17:39:45 CST 2017]; root of context hierarchy
+2017-11-02 17:39:47.024 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+2017-11-02 17:39:47.030 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {4.2.14.Final}
+2017-11-02 17:39:47.033 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+2017-11-02 17:39:47.038 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+2017-11-02 17:39:47.783 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2017-11-02 17:39:47.797 [main] INFO  o.hibernate.engine.jdbc.internal.LobCreatorBuilder - HHH000424: Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+2017-11-02 17:39:48.063 [main] INFO  o.h.e.t.internal.TransactionFactoryInitiator - HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-11-02 17:39:48.069 [main] INFO  o.h.hql.internal.ast.ASTQueryTranslatorFactory - HHH000397: Using ASTQueryTranslatorFactory
+2017-11-02 17:39:48.076 [main] WARN  org.hibernate.cfg.SettingsFactory - Unrecognized value for "hibernate.hbm2ddl.auto": none
+2017-11-02 17:39:48.127 [main] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 4.3.1.Final
+2017-11-02 17:39:49.914 [main] DEBUG org.hibernate.SQL - select survey0_.id as id1_2_, survey0_.create_time as create_t2_2_, survey0_.create_userid as create_u3_2_, survey0_.status as status4_2_, survey0_.survey_count as survey_c5_2_, survey0_.survey_desc as survey_d6_2_, survey0_.survey_endtm as survey_e7_2_, survey0_.survey_name as survey_n8_2_, survey0_.survey_starttm as survey_s9_2_, survey0_.survey_tip as survey_10_2_, survey0_.survey_type as survey_11_2_ from Survey survey0_ where survey0_.status=1 and survey0_.survey_type=(select user1_.user_type from User user1_ where user1_.status=? and user1_.id=?) and survey0_.survey_starttm<=? and survey0_.survey_endtm>=? order by survey0_.create_time desc
+2017-11-02 17:39:49.939 [main] TRACE org.hibernate.type.descriptor.sql.BasicBinder - binding parameter [1] as [INTEGER] - 1
+2017-11-02 17:39:49.939 [main] TRACE org.hibernate.type.descriptor.sql.BasicBinder - binding parameter [2] as [INTEGER] - 2
+2017-11-02 17:39:49.940 [main] TRACE org.hibernate.type.descriptor.sql.BasicBinder - binding parameter [3] as [TIMESTAMP] - 2017-11-02 17:39:49.76
+2017-11-02 17:39:49.945 [main] TRACE org.hibernate.type.descriptor.sql.BasicBinder - binding parameter [4] as [TIMESTAMP] - 2017-11-02 17:39:49.76
+2017-11-02 17:39:50.239 [main] WARN  com.sharewin.common.utils.mapper.JsonMapper - write to json string error:[com.sharewin.modules.sys.entity.Survey@6d303498, com.sharewin.modules.sys.entity.Survey@29eda4f8]
+com.fasterxml.jackson.databind.JsonMappingException: failed to lazily initialize a collection of role: com.sharewin.modules.sys.entity.Survey.surveyQuestions, could not initialize proxy - no Session (through reference chain: java.util.ArrayList[0]->com.sharewin.modules.sys.entity.Survey["questionCount"])
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:388) ~[jackson-databind-2.8.7.jar:2.8.7]
+	at com.fasterxml.jackson.databind.JsonMappingException.wrapWithPath(JsonMappingException.java:348) ~[jackson-databind-2.8.7.jar:2.8.7]
+	at com.fasterxml.jackson.databind.ser.std.StdSerializer.wrapAndThrow(StdSerializer.java:343) ~[jackson-databind-2.8.7.jar:2.8.7]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:698) ~[jackson-databind-2.8.7.jar:2.8.7]
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:155) ~[jackson-databind-2.8.7.jar:2.8.7]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119) ~[jackson-databind-2.8.7.jar:2.8.7]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79) ~[jackson-databind-2.8.7.jar:2.8.7]
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18) ~[jackson-databind-2.8.7.jar:2.8.7]
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:292) ~[jackson-databind-2.8.7.jar:2.8.7]
+	at com.fasterxml.jackson.databind.ObjectMapper._configAndWriteValue(ObjectMapper.java:3681) ~[jackson-databind-2.8.7.jar:2.8.7]
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:3057) ~[jackson-databind-2.8.7.jar:2.8.7]
+	at com.sharewin.common.utils.mapper.JsonMapper.toJson(JsonMapper.java:118) ~[classes/:na]
+	at com.sharewin.xhmz.XhmzTest.getSurvey(XhmzTest.java:105) [test-classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_31]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_31]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_31]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_31]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) [junit-4.12.jar:4.12]
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75) [spring-test-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86) [spring-test-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84) [spring-test-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:252) [spring-test-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94) [spring-test-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70) [spring-test-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191) [spring-test-4.3.7.RELEASE.jar:4.3.7.RELEASE]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137) [junit-4.12.jar:4.12]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) [junit-rt.jar:na]
+Caused by: org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.sharewin.modules.sys.entity.Survey.surveyQuestions, could not initialize proxy - no Session
+	at org.hibernate.collection.internal.AbstractPersistentCollection.throwLazyInitializationException(AbstractPersistentCollection.java:569) ~[hibernate-core-4.2.14.Final.jar:4.2.14.Final]
+	at org.hibernate.collection.internal.AbstractPersistentCollection.withTemporarySessionIfNeeded(AbstractPersistentCollection.java:188) ~[hibernate-core-4.2.14.Final.jar:4.2.14.Final]
+	at org.hibernate.collection.internal.AbstractPersistentCollection.readSize(AbstractPersistentCollection.java:139) ~[hibernate-core-4.2.14.Final.jar:4.2.14.Final]
+	at org.hibernate.collection.internal.PersistentBag.size(PersistentBag.java:242) ~[hibernate-core-4.2.14.Final.jar:4.2.14.Final]
+	at com.sharewin.modules.sys.entity.Survey.getQuestionCount(Survey.java:156) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_31]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_31]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_31]
+	at java.lang.reflect.Method.invoke(Method.java:483) ~[na:1.8.0_31]
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:664) ~[jackson-databind-2.8.7.jar:2.8.7]
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:690) ~[jackson-databind-2.8.7.jar:2.8.7]
+	... 37 common frames omitted
+2017-11-02 17:39:50.243 [main] INFO  com.sharewin.xhmz.XhmzTest - null
+2017-11-02 17:39:50.250 [Thread-5] INFO  o.s.context.support.GenericApplicationContext - Closing org.springframework.context.support.GenericApplicationContext@7bb58ca3: startup date [Thu Nov 02 17:39:45 CST 2017]; root of context hierarchy
