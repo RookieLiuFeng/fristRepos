@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dlfm" />
+        <module name="xhmz" />
+        <module name="xywx" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dlfm" target="1.6" />
+      <module name="xhmz" target="1.6" />
+      <module name="xywx" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://localhost:3306/dlfm</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <mapping class="com.sharewin.modules.sys.entity.DlfmBanner"/>
+    <mapping class="com.sharewin.modules.sys.entity.DlfmNews"/>
+    <mapping class="com.sharewin.modules.sys.entity.Permission"/>
+    <mapping class="com.sharewin.modules.sys.entity.Role"/>
+    <mapping class="com.sharewin.modules.sys.entity.User"/>
+    <mapping class="com.sharewin.modules.sys.entity.DlfmBook"/>
+      <mapping class="com.sharewin.modules.sys.entity.DlfmBookEntity"/>
+      <mapping class="com.sharewin.modules.sys.entity.Survey"/>
+    <mapping class="com.sharewin.modules.sys.entity.SurveyAnswer"/>
+    <mapping class="com.sharewin.modules.sys.entity.SurveyQuestionEntity"/>
+    <mapping class="com.sharewin.modules.sys.entity.SurveyQuestion"/>
+      <mapping class="com.sharewin.modules.sys.entity.DlfmNewsEntity"/>
+      <mapping class="com.sharewin.modules.sys.entity.DlfmAct"/>
+      <mapping class="com.sharewin.modules.sys.entity.SurveyEntity"/>
+      <mapping class="com.sharewin.modules.sys.entity.SurveyRecord"/>
+      <mapping class="com.sharewin.modules.sys.entity.SurveyRecordDetail"/>
+      <mapping class="com.sharewin.modules.sys.entity.PermissionEntity"/>
+      <mapping class="com.sharewin.modules.sys.entity.DlfmActEntity"/>
+      <mapping class="com.sharewin.modules.sys.entity.DlfmBannerEntity"/>
+      <mapping class="com.sharewin.modules.sys.entity.DlfmBookPeriod"/>
+      <mapping class="com.sharewin.modules.sys.entity.DlfmBookPeriodEntity"/>
+    <mapping class="com.sharewin.modules.sys.entity.DlfmActRootEntity"/>
+    <mapping class="com.sharewin.modules.sys.entity.DlfmActRoot"/>
+    <!-- <property name="connection.username"/> -->
+    <!-- <property name="connection.password"/> -->
+
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>

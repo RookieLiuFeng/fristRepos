@@ -1,0 +1,265 @@
+body {
+	font-size: 16px;
+	-webkit-user-select: none;
+	-webkit-text-size-adjust: none;
+	background: #f7f7f7;
+	color: #333;
+	position: relative;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+a,
+button,
+label,
+textarea,
+div,
+select,
+option {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+div.formfield {
+	display: block;
+	padding: 5px 5px 10px;
+	margin: 15px 5px 10px;
+	clear: both;
+	border-bottom: 1px dotted #ccc;
+}
+
+span.description {
+	font-size: 90%;
+	line-height: 1.5;
+}
+
+div.surveynotify {
+	background: #eff7ff;
+	padding: 10px 15px;
+	text-align: left;
+	font-size: 13px;
+	margin: 10px 0;
+}
+
+#surveyQuestion {
+	padding-top: 10px;
+}
+
+fieldset {
+	border: none;
+}
+
+div.field {
+	clear: both;
+	margin: 4px 5px;
+	padding: 0 7px;
+	border: 2px solid #f7f7f7;
+}
+
+div.field-label {
+	font-size: 16px !important;
+	font-weight: bold !important;
+	margin: 10px 0 10px 0 !important;
+	display: block;
+	word-wrap: break-word;
+	overflow: hidden;
+}
+
+span.req {
+	color: red !important;
+	margin: 2px 0 0 2px;
+}
+
+.qtypetip {
+    color: #0066FF;
+}
+
+.errorMessage {
+    color: Red;
+    min-height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+}
+
+.ui-controlgroup {
+	border: 1px solid #d5d5d5;
+	border-radius: 3px;
+	margin: 5px 0;
+	padding: 0;
+}
+
+.ui-controlgroup .ui-radio,
+.ui-controlgroup .ui-checkbox,
+.ui-controlgroup .ui-li-static {
+	background: none repeat scroll 0 0 #fff;
+	border-bottom: 1px solid #ebebeb;
+	border-color: #fff #fff #ebebeb;
+	font-size: 16px;
+	min-height: 43px;
+	position: relative;
+}
+
+.ui-controlgroup .ui-radio:first-child,
+.ui-controlgroup .ui-checkbox:first-child {
+	border-radius: 4px 4px 0 0;
+}
+
+.jqradiowrapper,
+.jqcheckwrapper {
+	display: block;
+	float: left;
+	margin: 11px 4px 10px 11px;
+}
+
+input {
+	outline: none;
+}
+
+a,
+a:visited,
+a:active {
+	text-decoration: none;
+	color: #45AFE3;
+}
+
+.jqradio {
+	-webkit-appearance: none;
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+	padding: 9px;
+	border-radius: 50px;
+	display: inline-block;
+	position: relative;
+}
+
+
+a.jqcheck {
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 9px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+}
+
+.jqcheckwrapper a.jqchecked {
+    background: url(../images/hook.png) no-repeat scroll center top transparent;
+    background-size: cover;
+    display: block;
+    height: 21px;
+    vertical-align: middle;
+    width: 21px;
+    border: none;
+}
+
+.jqradiowrapper a.jqchecked:after {
+	content: ' ';
+	width: 12px;
+	height: 12px;
+	border-radius: 50px;
+	position: absolute;
+	top: 3px;
+	background: #52adf9;
+	box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.3);
+	text-shadow: 0px;
+	left: 3px;
+	font-size: 32px;
+}
+
+.ui-controlgroup .ui-radio label,
+.ui-controlgroup .ui-checkbox label {
+	display: block;
+	margin-left: 40px;
+	padding: 10px 10px 10px 0;
+	cursor: pointer;
+}
+
+.ui-select {
+	background-color: #f4f4f4;
+	border: 1px solid #b2b2b2;
+	border-radius: 10px;
+	padding: 10px;
+	position: relative;
+}
+
+.ui-focus {
+	box-shadow: 0 0 12px #3388cc;
+}
+
+.focuschoice {
+	background-color: #f4f9fe !important;
+}
+
+.divSubmit{
+	padding: 10px;
+}
+.button {
+    width: 100%;
+    display: block;
+    margin: 10px 0px;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-size: 1.2em;
+    padding: 9px 0px 9px;
+    border-radius: .2em;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.6);
+}
+
+.blue, blue:visited {
+    color: #F7F7F7;
+    background: #2695D0;
+}
+
+.blue:active {
+	background: #007ead;
+}
+
+.scrolltop {
+    display: block;
+    position: fixed;
+    right: 8px;
+    height: 38px;
+    width: 38px;
+    z-index: 99;
+    background: rgba(64, 64, 64, .9);
+    border-radius: 1px;
+    box-shadow: 0 0 2px rgba(0,0,0,.3);
+    opacity: 0.618;
+    bottom: 50%;
+}
+
+.scrolltop:before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    display: inline-block;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 9px solid white;
+    border-bottom: 0;
+    top: 12px;
+    -webkit-transform: scale(1,1.2222);
+    -webkit-transform: translate(0,1px);
+    transform: scale(1,1.2222);
+    transform: translate(0,1px);
+}
+.scrolltop:after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 23px;
+    width: 18px;
+    height: 3px;
+    border-radius: 1px;
+    background: white;
+}
