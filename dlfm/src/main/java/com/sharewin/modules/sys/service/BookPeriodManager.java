@@ -48,7 +48,7 @@ public class BookPeriodManager extends EntityManager<DlfmBookPeriod,Integer> {
     public Page<DlfmBookPeriod> getBookPeriodByQuery(String bookPetiodName,String publishType, Page<DlfmBookPeriod> page){
         Parameter parameter = new Parameter();
         StringBuilder hql = new StringBuilder();
-        hql.append("select u from DlfmBookPeriod u where 1=1");
+        hql.append("select u from DlfmBookPeriod u where 1=1 and u.periodType=0");
         if(StringUtils.isNotBlank(bookPetiodName)){
             hql.append(" and u.periodName like :periodName");
             parameter.put("periodName","%"+bookPetiodName+"%");

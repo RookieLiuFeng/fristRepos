@@ -2,7 +2,6 @@ package com.sharewin.modules.sys.web;
 
 import com.google.common.collect.Lists;
 import com.sharewin.common._enum.SelectType;
-import com.sharewin.common._enum.SexType;
 import com.sharewin.common.model.Combobox;
 import com.sharewin.common.model.Datagrid;
 import com.sharewin.common.model.Result;
@@ -17,6 +16,7 @@ import com.sharewin.core.security.SecurityUtils;
 import com.sharewin.core.security.SessionInfo;
 import com.sharewin.modules.sys.entity.DlfmBookPeriod;
 import com.sharewin.modules.sys.service.BookPeriodManager;
+import com.sharewin.modules.sys.service.BookRecommendManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,40 +29,40 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping(value = "${adminPath}/bookPeriod")
-public class BookPeriodController extends BaseController<DlfmBookPeriod,Integer>{
+@RequestMapping(value = "${adminPath}/bookRecommend")
+public class BookRecommendController extends BaseController<DlfmBookPeriod,Integer>{
 
     @Autowired
-    private BookPeriodManager bookPeriodManager;
+    private BookRecommendManager bookRecommendManager;
 
     @Override
     public EntityManager getEntityManager() {
-        return bookPeriodManager;
+        return bookRecommendManager;
     }
 
     @RequestMapping("index")
-    public String pageBookPeriod(){
-        return "/modules/sys/book-period";
+    public String bookRecommendPage(){
+        return "/modules/sys/book-recommend";
     }
 
-
     /**
-     * 期刊集合
-     * @param sc_bookPeriodName
+     * 好书推荐 集合
+     * @param bookRecommendName
+     * @param publishType
      * @return
      */
-    @RequestMapping("bookPeriodDatagrid")
+    @RequestMapping(value = {"bookRecommendDatagrid"})
     @ResponseBody
-    public Datagrid<DlfmBookPeriod> bookPeriodDatagrid(String sc_bookPeriodName,String sc_publishType){
+    public Datagrid<DlfmBookPeriod> bookRecommendDatagrid(String bookRecommendName,String publishType){
         Page<DlfmBookPeriod> p = new Page<DlfmBookPeriod>(SpringMVCHolder.getRequest());
-        p = bookPeriodManager.getBookPeriodByQuery(sc_bookPeriodName,sc_publishType,p);
+        p = bookRecommendManager.getBookRecommendByQuery(bookRecommendName,publishType,p);
         Datagrid<DlfmBookPeriod> dg = new Datagrid<DlfmBookPeriod>(p.getTotalCount(), p.getResult());
         return dg;
     }
 
     @RequestMapping(value = {"input"})
-    public String bookPeriodInput(@ModelAttribute("model") DlfmBookPeriod bookPeriod, Model model){
-        return "modules/sys/book-period-input";
+    public String bookRecommendInput(@ModelAttribute("model") DlfmBookPeriod bookPeriod, Model model){
+        return "modules/sys/book-recommend-input";
     }
 
     /**
@@ -89,7 +89,7 @@ public class BookPeriodController extends BaseController<DlfmBookPeriod,Integer>
     @RequestMapping(value = {"publish/{id}"})
     @ResponseBody
     public Result publish(@PathVariable Integer id) {
-        return bookPeriodManager.publish(id);
+        return bookRecommendManager.publish(id);
     }
 
     /**
@@ -115,5 +115,4 @@ public class BookPeriodController extends BaseController<DlfmBookPeriod,Integer>
         cList.add(combobox2);
         return cList;
     }
-
 }
