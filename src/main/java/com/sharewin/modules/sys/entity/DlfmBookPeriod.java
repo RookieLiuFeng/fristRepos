@@ -35,6 +35,7 @@ public class DlfmBookPeriod {
     private Timestamp releaseTime;
     private Integer periodType;
     private String periodDesc;
+    private String periodInfo;
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -125,6 +126,16 @@ public class DlfmBookPeriod {
 
     public void setPeriodDesc(String periodDesc) {
         this.periodDesc = periodDesc;
+    }
+
+    @Basic
+    @Column(name = "period_info")
+    public String getPeriodInfo() {
+        return periodInfo;
+    }
+
+    public void setPeriodInfo(String periodInfo) {
+        this.periodInfo = periodInfo;
     }
 
     @Transient
