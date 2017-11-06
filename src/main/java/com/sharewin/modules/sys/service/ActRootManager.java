@@ -64,16 +64,16 @@ public class ActRootManager extends EntityManager<DlfmActRoot,Integer> {
     @Deprecated
     public List<Map<String,Object>> getWxActList(int page){
         Parameter parameter = new Parameter();
-        String sql = "select u.id,u.act_name as actName,u.act_cover_url as actCoverUrl,DATE_FORMAT(u.create_time,'%Y年%m月%d日 %h:%i') as createTime,u.act_time as actTime from dlfm_act u where u.status=1 order by u.create_time desc";
+        String sql = "select u.id,u.act_name as actName,u.act_cover_url as actCoverUrl,DATE_FORMAT(u.create_time,'%Y年%m月%d日 %H:%i') as createTime,u.act_time as actTime from dlfm_act u where u.status=1 order by u.create_time desc";
         return getEntityDao().findBySql(sql,parameter,Map.class,page,15);
     }
 
     public List<Map<String,Object>> getWxActRoot(int pageNo){
         Parameter parameter = new Parameter();
-        String sql = "select u.id,u.act_name as actName,u.act_cover_url as actCoverUrl,DATE_FORMAT(u.create_time,'%Y年%m月%d日 %h:%i') as createTime,act_type as actType from dlfm_act_root u where u.status=1 order by u.create_time desc";
+        String sql = "select u.id,u.act_name as actName,u.act_cover_url as actCoverUrl,DATE_FORMAT(u.create_time,'%Y年%m月%d日 %H:%i') as createTime,act_type as actType from dlfm_act_root u where u.status=1 order by u.create_time desc";
         List<Map<String,Object>> actRoots = getEntityDao().findBySql(sql,null,Map.class,pageNo,10);
        if(actRoots!=null){
-            String actSql = "select u.id,u.act_name as actName,u.act_cover_url as actCoverUrl,DATE_FORMAT(u.create_time,'%Y年%m月%d日 %h:%i') as createTime from dlfm_act u where u.status=1 and u.act_root_id=:actRootId order by u.create_time desc";
+            String actSql = "select u.id,u.act_name as actName,u.act_cover_url as actCoverUrl,DATE_FORMAT(u.create_time,'%Y年%m月%d日 %H:%i') as createTime from dlfm_act u where u.status=1 and u.act_root_id=:actRootId order by u.create_time desc";
             for(int i=0;i<actRoots.size();i++){
               parameter.clear();
               parameter.put("actRootId",actRoots.get(i).get("id"));

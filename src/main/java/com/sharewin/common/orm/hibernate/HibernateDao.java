@@ -668,7 +668,6 @@ public class HibernateDao<T, PK extends Serializable> extends
     public <E> Page<E> findBySqlForVo(Page<E> page, String sqlString, Parameter parameter, Class<?> resultClass, String[] properties) {
         // get count
         String countSqlString = "select count(*) " + super.removeSelect(super.removeOrders(sqlString));
-        System.out.println(countSqlString);
         Query countQuery = createSqlQuery(countSqlString, parameter);
         List<Object> list = countQuery.list();
         if (list.size() > 0) {
@@ -699,7 +698,6 @@ public class HibernateDao<T, PK extends Serializable> extends
         setScalarBean(query, resultClass, properties);
         query.setFirstResult(page.getFirstResult());
         query.setMaxResults(page.getMaxResults());
-        //setResultTransformer(query, resultClass);
         query.setResultTransformer(Transformers.aliasToBean(resultClass));
         page.setResult(query.list());
         return page;
@@ -772,7 +770,7 @@ public class HibernateDao<T, PK extends Serializable> extends
      * @param resultClass
      * @return
      */
-    public List<T> findBySqlForVo(String sqlString, Parameter parameter, Class<?> resultClass) {
+    public List findBySqlForVo(String sqlString, Parameter parameter, Class<?> resultClass) {
         return findBySqlForVo(sqlString, parameter, resultClass, null);
     }
 
@@ -802,7 +800,7 @@ public class HibernateDao<T, PK extends Serializable> extends
      * @param properties2Exclude
      * @return
      */
-    public List<T> findBySqlForVoWithExcludeProperties(String sqlString, Parameter parameter, Class<?> resultClass, String[] properties2Exclude) {
+    public List findBySqlForVoWithExcludeProperties(String sqlString, Parameter parameter, Class<?> resultClass, String[] properties2Exclude) {
         SQLQuery query = createSqlQuery(sqlString, parameter);
         setScalarBeanWithExcludeProperties(query, resultClass, properties2Exclude);
         query.setResultTransformer(Transformers.aliasToBean(resultClass));

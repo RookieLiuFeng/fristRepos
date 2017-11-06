@@ -25,10 +25,7 @@ import com.sharewin.utils.AppConstants;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +34,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -68,9 +66,10 @@ public class UserController extends BaseController<User, Integer> {
      */
     @RequestMapping("userDatagrid")
     @ResponseBody
-    public Datagrid<User> userDatagrid(String realname) {
+    public Datagrid<User> userDatagrid(String realname,String userType) {
+        logger.info("userType:"+userType);
         Page<User> p = new Page<User>(SpringMVCHolder.getRequest());
-        p = userManager.getUserByQuery(realname, p);
+        p = userManager.getUserByQuery(realname,userType, p);
         Datagrid<User> dg = new Datagrid<User>(p.getTotalCount(), p.getResult());
         logger.info(JsonMapper.getInstance().toJson(dg));
         return dg;
@@ -224,4 +223,50 @@ public class UserController extends BaseController<User, Integer> {
         }
     }
 
+
+    /**
+     * 根据ID删除
+     *
+     * @param id 主键ID
+     * @return
+     */
+    @RequestMapping(value = {"_delete/{id}"})
+    @ResponseBody
+    public Result delete(@PathVariable Integer id) {
+        List<Integer> ids = new ArrayList<Integer>();
+        ids.add(id);
+        return userManager.deleteUsers(ids);
+    }
+
+    @RequestMapping(value = {"deleteUsers"})
+    @ResponseBody
+    public Result deleteUsers(@RequestParam(value = "userids", required = false) List<Integer> userids){
+        return userManager.deleteUsers(userids);
+    }
+
+    /**
+     * 用户类型
+     *
+     * @throws Exception
+     */
+    @RequestMapping(value = {"userTypeCombobox"})
+    @ResponseBody
+    public List<Combobox> publishTypeCombobox(String selectType) throws Exception {
+        List<Combobox> cList = Lists.newArrayList();
+        //为combobox添加  "---全部---"、"---请选择---"
+        if (!StringUtils.isBlank(selectType)) {
+            SelectType s = SelectType.getSelectTypeValue(selectType);
+            if (s != null) {
+                Combobox selectCombobox = new Combobox("", s.getDescription());
+                cList.add(selectCombobox);
+            }
+        }
+        Combobox combobox = new Combobox("0", "学生");
+        cList.add(combobox);
+        Combobox combobox2 = new Combobox("1", "老师");
+        cList.add(combobox2);
+        Combobox combobox3 = new Combobox("2", "家长");
+        cList.add(combobox3);
+        return cList;
+    }
 }

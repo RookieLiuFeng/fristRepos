@@ -128,18 +128,4 @@ public class SurveyQuestion {
     public void setAnswerNames(String answerNames) {
         this.answerNames = answerNames;
     }
-
-    @Override
-    public String toString() {
-        return "SurveyQuestion{" +
-                "id=" + id +
-                ", questionName='" + questionName + '\'' +
-                ", questionType=" + questionType +
-                ", status=" + status +
-//                ", survey=" + survey +
-                ", questionOrder=" + questionOrder +
-                ", surveyAnswers=" + surveyAnswers +
-                ", answerNames='" + answerNames + '\'' +
-                '}';
-    }
 }

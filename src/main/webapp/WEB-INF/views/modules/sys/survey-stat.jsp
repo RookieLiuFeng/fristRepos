@@ -9,10 +9,10 @@
         <div class="search" style="position: relative; font-size: large;text-align: center;">
             &nbsp;<span style="color: #f43838;font-size: larger;height: 40px;" class="eu-label">所属问卷：${survey.surveyName}</span>&nbsp;
             <div style="">参与调查人数：${survey.surveyCount}</div>
-            <a class="easyui-linkbutton" href="javascript:void(0);" data-options="plain:true,iconCls:'eu-icon-database_white'" onclick="surveyResult();"
-               style="float: right;position: absolute;top: 5px;right: 17%">参与名单</a>
-            <a class="easyui-linkbutton" href="javascript:void(0);" data-options="plain:true,iconCls:'eu-icon-database_go'" onclick="exportExcelForSurvey();"
-               style="float: right;position: absolute;top: 5px;right: 12%">参与名单导出</a>
+            <div style="text-align: right">
+            <a class="easyui-linkbutton" href="javascript:void(0);" data-options="plain:true,iconCls:'eu-icon-database_white'" onclick="surveyResult();">参与名单</a>
+            <a class="easyui-linkbutton" href="javascript:void(0);" data-options="plain:true,iconCls:'eu-icon-database_go'" onclick="exportExcelForSurvey();">统计导出</a>
+            </div>
         </div>
     </div>
     <%-- 中间部分 列表 --%>

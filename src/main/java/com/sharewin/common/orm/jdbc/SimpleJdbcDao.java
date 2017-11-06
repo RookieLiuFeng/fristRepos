@@ -102,11 +102,16 @@ public class SimpleJdbcDao {
     public Object queryForObject(final String sql, Map parameters, Class clazz) {
         Assert.hasText(sql, "sql语句不正确!");
         Assert.notNull(clazz, "对象类型不能为空!");
-        if (parameters != null) {
-            return namedParameterJdbcTemplate.queryForObject(sql, parameters, resultBeanMapper(clazz));
-        } else {
-            return jdbcTemplate.queryForObject(sql, resultBeanMapper(clazz));
+        try{
+            if (parameters != null) {
+                return namedParameterJdbcTemplate.queryForObject(sql, parameters, resultBeanMapper(clazz));
+            } else {
+                return jdbcTemplate.queryForObject(sql, resultBeanMapper(clazz));
+            }
+        } catch (EmptyResultDataAccessException e) {
+            return null;
         }
+
     }
 
     /**

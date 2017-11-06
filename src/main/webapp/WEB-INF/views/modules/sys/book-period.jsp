@@ -243,8 +243,8 @@
             onLoad: function () {
                 formInit();
                 if (row) {
-                    $("input[name='periodName']").attr('readonly', 'readonly');
-                    $("input[name='periodName']").css('background', '#eee');
+                   // $("input[name='periodName']").attr('readonly', 'readonly');
+                   // $("input[name='periodName']").css('background', '#eee');
                     $book_period_form.form('load', row);
                 }else{
                     $("input[name='periodType']:eq(0)").attr("checked", 'checked');//状态 初始化值

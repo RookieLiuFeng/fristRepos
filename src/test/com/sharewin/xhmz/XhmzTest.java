@@ -3,13 +3,12 @@ package com.sharewin.xhmz;
 import com.google.common.collect.Lists;
 import com.sharewin.common.orm.Page;
 import com.sharewin.common.orm.jdbc.JdbcDao;
+import com.sharewin.common.utils.encode.Encrypt;
 import com.sharewin.common.utils.mapper.JsonMapper;
-import com.sharewin.common.web.springmvc.SpringMVCHolder;
 import com.sharewin.modules.sys.entity.DlfmNews;
 import com.sharewin.modules.sys.entity.Survey;
 import com.sharewin.modules.sys.entity.User;
 import com.sharewin.modules.sys.service.*;
-import com.sharewin.modules.sys.vo.RecordVo;
 import com.sharewin.modules.sys.vo.SurveyResult;
 import com.sharewin.modules.wx.service.WxDlfmManager;
 import org.junit.Test;
@@ -20,6 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -105,29 +107,27 @@ public class XhmzTest {
     }
     @Test
     public void getSurvey(){
-        logger.info(JsonMapper.getInstance().toJson(surveyManager.getWxSurveyList(2)));
+        logger.info(JsonMapper.getInstance().toJson(surveyManager.getWxSurveyList(1)));
     }
 
     @Test
-    public void getResult(){
-        logger.info(JsonMapper.getInstance().toJson(surveyManager.getResult(4,null,new Page<RecordVo>(SpringMVCHolder.getRequest()))));
-    }
-    @Test
-    public void ja(){
-        List<Map<String,Object>> m1 = new ArrayList<Map<String, Object>>();
-        Map<String,Object> t1 = new HashMap<String,Object>();
-        t1.put("name","123");
-        t1.put("age",234);
-        Map<String,Object> t2 = new HashMap<String,Object>();
-        t2.put("name","gher");
-        t2.put("age",567);
-        m1.add(t1);
-        m1.add(t2);
-        logger.info(JsonMapper.getInstance().toJson(m1));
+    public void updatePassword() throws UnsupportedEncodingException {
+        String url = URLEncoder.encode("http://tgwx.share-win.net/dlfm/wx/login/oauth","utf-8");
+       // String url = URLDecoder.decode("http%3a%2f%2ftgwx.share-win.net%2fdlfm%2fwx%2flogin%2foauth","utf-8");
+        logger.info(url);
+       // logger.info(JsonMapper.getInstance().toJson(wxDlfmManager.updatePassword(1, Encrypt.md5("sharewin"),"")));
     }
 
     @Test
-    public void getRecord(){
-        logger.info(JsonMapper.getInstance().toJson(surveyManager.getResult(4)));
+    public void deleteUsers(){
+        List<Integer> ids = new ArrayList<Integer>();
+        ids.add(1004);
+        ids.add(1005);
+        ids.add(1006);
+        ids.add(1007);
+        ids.add(1008);
+        ids.add(1009);
+        userManager.deleteUsers(ids);
     }
+
 }

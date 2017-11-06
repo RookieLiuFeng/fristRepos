@@ -107,9 +107,7 @@
     </style>
 
     <script>
-        var userConfig = {
-            uuid:${user.id}
-        }
+
     </script>
 
 </head>
@@ -147,7 +145,7 @@
     </div>
 </div>
 <div class="module tbline">
-    <a class="module-cell personal-cell btmline" href="http://tgwx.share-win.net/dlfm/wx/survey?userid=${user.id}">
+    <a class="module-cell personal-cell btmline" href="${ctxfront}/survey">
         <img src="${ctxStatic}/images/my_value.png"/>
         <div class="module-cell_bd">
             <p class="personal-title">问卷调查</p>
@@ -158,7 +156,7 @@
             </svg>
         </div>
     </a>
-    <div class="module-cell personal-cell btmline">
+    <a class="module-cell personal-cell btmline">
         <img src="${ctxStatic}/images/my_message.png"/>
         <div class="module-cell_bd">
             <p class="personal-title">我的消息</p>
@@ -168,8 +166,8 @@
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-r"></use>
             </svg>
         </div>
-    </div>
-    <div class="module-cell personal-cell btmline">
+    </a>
+    <a class="module-cell personal-cell btmline" href="${ctxfront}/mycenter/editpassword">
         <img src="${ctxStatic}/images/my_password.png"/>
         <div class="module-cell_bd">
             <p class="personal-title">密码修改</p>
@@ -179,7 +177,7 @@
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-arrow-r"></use>
             </svg>
         </div>
-    </div>
+    </a>
     <div class="module-cell personal-cell btmline">
         <img src="${ctxStatic}/images/my_setting.png"/>
         <div class="module-cell_bd">
@@ -194,7 +192,7 @@
 
 </div>
 <div class="module tbline">
-    <a class="module-cell personal-cell flex-jc-c">
+    <a id="removeBindBtn" href="javascript:void(0)" class="module-cell personal-cell flex-jc-c">
         <div class="module-cell_bd tc" style="font-size: 16px;color: #E64340;">
             <span>解除绑定</span>
         </div>
@@ -203,7 +201,64 @@
 <script src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 <script>
     $(function () {
-        $("img.lazy").lazyload();
+        var pageManager = {
+            $removeBindBtn :$("#removeBindBtn"),
+            bindEvent:function () {
+                var self = this;
+                this.$removeBindBtn.on("click",function () {
+                    $.modal({
+                        title: "友情提示",
+                        text: "是否解除当前帐号的微信绑定?",
+                        buttons: [
+                            { text: "取消", className: "default"},
+                            { text: "确定", onClick: function(){
+                                   self.removeBind();
+                                }
+
+                            }
+                        ]
+                    });
+
+                })
+            },
+            removeBind:function () {
+                var self = this;
+                $.ajax({
+                    type: 'POST',
+                    url: ctxFront + '/mycenter/removeBindWx.json',
+                    dataType: 'json',
+                    async: true,
+                    success: function (data) {
+                        // console.log(JSON.stringify(data));
+                        $.hideLoading();
+                        if(data.code == 1){
+                           window.location.reload();
+                        }
+                    },
+                    error: function (xhr, type) {
+                        $.hideLoading();
+                        setTimeout(function () {
+                            $.alert("发生未知错误!");
+                        },200);
+
+                    },
+                    beforeSend: function (xhr, settings) {
+                        $.showLoading();
+                    },
+                    complete: function (xhr, status) {
+                        $.hideLoading();
+                    }
+                });
+            }
+        }
+        function init() {
+            $("img.lazy").lazyload();
+            pageManager.bindEvent();
+
+        }
+
+        init();
+
     });
 </script>
 </body>

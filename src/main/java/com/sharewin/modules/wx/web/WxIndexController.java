@@ -1,6 +1,8 @@
 package com.sharewin.modules.wx.web;
 
 import com.sharewin.common.model.Result;
+import com.sharewin.core.security.SecurityConstants;
+import com.sharewin.core.security.SecurityType;
 import com.sharewin.core.security.SecurityUtils;
 import com.sharewin.core.security.SessionInfo;
 import com.sharewin.core.security.annotation.RequiresUser;
@@ -18,8 +20,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -213,58 +217,6 @@ public class WxIndexController {
 
     }
 
-    /**
-     * 问卷调查
-     *
-     * @param userid
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "survey")
-    @RequiresUser(required = false)
-    public String pageSurvey(int userid, Model model) {
-        model.addAttribute("surveys", surveyManager.getWxSurveyList(userid));
-        model.addAttribute("userid",userid);
-        return "/modules/wx/survey_index";
-    }
-
-    /**
-     * 问卷调查详情页
-     *
-     * @param id
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "survey/{id}")
-    @RequiresUser(required = false)
-    public String pageSurveyDisplay(@PathVariable(value = "id") Integer id,int userid, Model model) {
-        model.addAttribute("survey", surveyManager.getById(id));
-        model.addAttribute("userid",userid);
-        return "/modules/wx/survey_display";
-    }
-
-    /**
-     * 提交问卷
-     *
-     * @param id
-     * @param jsonString
-     * @return
-     * @throws IOException
-     */
-    @RequestMapping(value = "survey/submit")
-    @RequiresUser(required = false)
-    @ResponseBody
-    public Result submitSurvey(Integer id,int userid, String jsonString) throws IOException {
-        Result result = null;
-        if (surveyManager.checkIsSurvey(id, userid) > 0) {
-            result = new Result(Result.WARN, "你已参加过本次问卷！", null);
-        } else {
-            surveyManager.addSurveyRecord(id, userid, jsonString);
-            result = Result.successResult();
-        }
-
-        return result;
-    }
 
     /**
      * 校园首页
@@ -310,7 +262,7 @@ public class WxIndexController {
         return "/modules/wx/act";
     }
 
-    @RequestMapping(value = "act/list/")
+    @RequestMapping(value = "act/list/root")
     @RequiresUser(required = false)
     public List<Map<String, Object>> getWxActRoot(int pageNo) {
         return actRootManager.getWxActRoot(pageNo);
@@ -336,10 +288,83 @@ public class WxIndexController {
    * ************************************************************************/
 
     @RequestMapping(value = "mycenter")
-    @RequiresUser(required = false)
-    public String pageToMyCenter(int userid,Model model) {
-        model.addAttribute("user",wxDlfmManager.getUsers(userid));
+    public String pageToMyCenter(Model model) {
+        model.addAttribute("user", wxDlfmManager.getUsers(SecurityUtils.getCurrentSessionInfo().getUserId()));
         return "modules/wx/mycenter";
+    }
+
+    @RequestMapping(value = "mycenter/editpassword")
+    public String updatePasswordPage() {
+        return "modules/wx/editpd";
+    }
+
+    @RequestMapping(value = "mycenter/editpassword.json", method = RequestMethod.POST)
+    @ResponseBody
+    public Result updatePassword(String orgpassword, String newpassword) {
+        SessionInfo sessionInfo = SecurityUtils.getCurrentSessionInfo();
+        return wxDlfmManager.updatePassword(sessionInfo.getUserId(), orgpassword, newpassword);
+    }
+
+    @RequestMapping(value = "mycenter/removeBindWx.json", method = RequestMethod.POST)
+    @ResponseBody
+    public Result removeBindWx(HttpServletRequest request){
+        SessionInfo sessionInfo = SecurityUtils.getCurrentSessionInfo();
+        Result result = wxDlfmManager.removeBindWx(sessionInfo.getUserId());
+        if(result.getCode()==1){
+            String sessionId = request.getSession().getId();
+            SecurityUtils.removeUserFromSession(sessionId, false, SecurityType.logout);
+            result.setObj(SecurityConstants.WX_UNAUTHORITY_LOGIN_PAGE);
+        }
+        return result;
+    }
+
+    /**
+     * 问卷调查
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "survey")
+    public String pageSurvey(Model model) {
+        SessionInfo sessionInfo = SecurityUtils.getCurrentSessionInfo();
+        model.addAttribute("surveys", surveyManager.getWxSurveyList(sessionInfo.getUserId()));
+        return "/modules/wx/survey_index";
+    }
+
+    /**
+     * 问卷调查详情页
+     *
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "survey/{id}")
+    public String pageSurveyDisplay(@PathVariable(value = "id") Integer id, Model model) {
+        model.addAttribute("survey", surveyManager.getById(id));
+        return "/modules/wx/survey_display";
+    }
+
+    /**
+     * 提交问卷
+     *
+     * @param id
+     * @param jsonString
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = "survey/submit")
+    @ResponseBody
+    public Result submitSurvey(Integer id, String jsonString) throws IOException {
+        Result result = null;
+        SessionInfo sessionInfo = SecurityUtils.getCurrentSessionInfo();
+        if (surveyManager.checkIsSurvey(id, sessionInfo.getUserId()) > 0) {
+            result = new Result(Result.WARN, "你已参加过本次问卷！", null);
+        } else {
+            surveyManager.addSurveyRecord(id, sessionInfo.getUserId(), jsonString);
+            result = Result.successResult();
+        }
+
+        return result;
     }
 
 }

@@ -82,7 +82,7 @@ $(function() {
             type: 'POST',
             url: ctxFront + '/survey/submit',
             dataType: 'json',
-            data: {id:surveyId,userid:userid,jsonString:jsonString},
+            data: {id:surveyId,jsonString:jsonString},
             async: true,
             success: function (data) {
                 if (data != null) {

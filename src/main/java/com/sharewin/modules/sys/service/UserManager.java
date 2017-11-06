@@ -63,14 +63,18 @@ public class UserManager extends EntityManager<User,Integer> {
      * @param page
      * @return
      */
-    public Page<User> getUserByQuery(String realname, Page<User> page){
+    public Page<User> getUserByQuery(String realname,String userType, Page<User> page){
         Parameter parameter = new Parameter();
         StringBuilder hql = new StringBuilder();
         hql.append("select u from User u where u.status=:status ");
         parameter.put("status",StatusState.normal.getValue());
         if(StringUtils.isNotBlank(realname)){
-            hql.append("and u.realname like :realname");
+            hql.append(" and u.realname like :realname");
             parameter.put("realname","%"+realname+"%");
+        }
+        if(userType!=null&&(!userType.equals(""))){
+            hql.append(" and userType=:userType");
+            parameter.put("userType",Integer.parseInt(userType));
         }
         //设置分页
         page = userDao.findPage(page,hql.toString(),parameter);
@@ -115,6 +119,17 @@ public class UserManager extends EntityManager<User,Integer> {
         } finally {
             return result;
         }
+    }
+
+    @Transactional(readOnly = false)
+    public Result deleteUsers(List<Integer> userids){
+        String ids = Collections3.convertToString(userids,",");
+        String insertSql = "insert into user_del (id,login_name,password,realname,idcardno,enter_school_time,telphone,guardian_name,sex,birthday,create_time,user_type,del_time)" +
+                " (select id,login_name,password,realname,idcardno,enter_school_time,telphone,guardian_name,sex,birthday,create_time,user_type,now() from user where id in ("+ids+"))";
+        String sql = "delete from user where id in ("+ids+")";
+        userDao.updateBySql(insertSql,null);
+        userDao.updateBySql(sql,null);
+        return Result.successResult();
     }
 
 }

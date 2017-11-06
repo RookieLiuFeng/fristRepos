@@ -72,14 +72,4 @@ public class SurveyAnswer {
         this.surveyQuestion = surveyQuestion;
     }
 
-    @Override
-    public String toString() {
-        return "SurveyAnswer{" +
-                "id=" + id +
-                ", answerName='" + answerName + '\'' +
-                ", score=" + score +
-                ", status=" + status +
-//                ", surveyQuestion=" + surveyQuestion +
-                '}';
-    }
 }

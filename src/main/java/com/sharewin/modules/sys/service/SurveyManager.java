@@ -2,7 +2,6 @@ package com.sharewin.modules.sys.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.sharewin.common.orm.Page;
-import com.sharewin.common.orm.PageSqlUtils;
 import com.sharewin.common.orm.entity.StatusState;
 import com.sharewin.common.orm.hibernate.EntityManager;
 import com.sharewin.common.orm.hibernate.HibernateDao;
@@ -29,23 +28,11 @@ import java.util.Map;
 public class SurveyManager extends EntityManager<Survey, Integer> {
 
     private HibernateDao<Survey, Integer> surveyDao;
-    private HibernateDao<QuestionVo, Integer> questionVoDao;
-    private HibernateDao<AnswerVo, Integer> answerVoDao;
-    private HibernateDao<RecordDetailVo, Integer> recordDetailVoDao;
-    private HibernateDao<RecordVo, Integer> recordVoDao;
 
     @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
         surveyDao = new HibernateDao<Survey, Integer>(sessionFactory,
                 Survey.class);
-        questionVoDao = new HibernateDao<QuestionVo, Integer>(sessionFactory,
-                QuestionVo.class);
-        answerVoDao = new HibernateDao<AnswerVo, Integer>(sessionFactory,
-                AnswerVo.class);
-        recordDetailVoDao = new HibernateDao<RecordDetailVo, Integer>(sessionFactory,
-                RecordDetailVo.class);
-        recordVoDao = new HibernateDao<RecordVo, Integer>(sessionFactory,
-                RecordVo.class);
     }
 
 
@@ -87,10 +74,7 @@ public class SurveyManager extends EntityManager<Survey, Integer> {
     public List<Survey> getWxSurveyList(int userid) {
         Parameter parameter = new Parameter();
         parameter.put("curTime",DateUtils.getSysTimestamp());
-        parameter.put("status",StatusState.normal.getValue());
-        parameter.put("userid",userid);
-        String hql = "select u from Survey u where u.status=1 and u.surveyType=(select a.userType as surveytype from User a where a.status=:status and a.id=:userid)\n " +
-                "and u.surveyStarttm<=:curTime and u.surveyEndtm>=:curTime order by u.createTime desc";
+        String hql = "select u from Survey u where u.status=1 and (u.surveyType=(select a.userType as surveytype from User a where a.status=:status and a.id=:userid) or u.surveyType=-1) and u.surveyStarttm<=:curTime and u.surveyEndtm>=:curTime order by u.createTime desc";
         return getEntityDao().find(hql,parameter);
     }
 
@@ -125,7 +109,7 @@ public class SurveyManager extends EntityManager<Survey, Integer> {
         //更新问卷次数
         Parameter parameter = new Parameter();
         parameter.put("surveyId", surveyId);
-        String sql = "update survey u set u.survey_count = (select count(*) from survey_record where survey_id=:surveyId and status=1) where id=:surveyId";
+        String sql = "update survey u set u.survey_count = (select count(*)+1 from survey_record where survey_id=:surveyId and status=1) where id=:surveyId";
         getEntityDao().updateBySql(sql, parameter);
     }
 
@@ -147,7 +131,7 @@ public class SurveyManager extends EntityManager<Survey, Integer> {
         sql.append("SELECT sq.`id` AS questionId,sq.`question_name` AS questionName,CASE sq.`question_type` WHEN 0 THEN '单选' ELSE '多选' END AS questionType " +
                 "FROM survey s INNER JOIN survey_question sq ON s.`id`=sq.`survey_id` WHERE s.`status`=1 AND sq.`status`=1 AND s.`id`=:surveyId ORDER BY sq.`question_order`");
         parameter.put("surveyId", surveyId);
-        List<QuestionVo> questionVoList = questionVoDao.findBySqlForVoWithExcludeProperties(sql.toString(), parameter, QuestionVo.class, new String[]{"answerVoList"});
+        List<QuestionVo> questionVoList = surveyDao.findBySqlForVoWithExcludeProperties(sql.toString(), parameter, QuestionVo.class, new String[]{"answerVoList"});
 
         sql.delete(0, sql.length());
         parameter.clear();
@@ -174,14 +158,14 @@ public class SurveyManager extends EntityManager<Survey, Integer> {
         sql.append("SELECT sa.`id` AS answerId,sa.`answer_name` AS answerName FROM survey_question sq INNER JOIN survey_answer sa ON sq.`id`=sa.`question_id` " +
                 "  WHERE sq.`status`=1 AND sa.`status`=1 AND sq.`id`=:questionId ");
         parameter.put("questionId", questionId);
-        List<AnswerVo> answerVoList = answerVoDao.findBySqlForVoWithExcludeProperties(sql.toString(), parameter, AnswerVo.class, new String[]{"chooseNumber", "ratio"});
+        List<AnswerVo> answerVoList = surveyDao.findBySqlForVoWithExcludeProperties(sql.toString(), parameter, AnswerVo.class, new String[]{"chooseNumber", "ratio"});
 
         sql.delete(0, sql.length());
         parameter.clear();
         sql.append("SELECT srd.`id` AS recordDetailId,srd.`answer_id` AS answerIds FROM survey_record_detail srd INNER JOIN survey_record sr ON srd.`record_id`=sr.`id` " +
                 " WHERE sr.`status`=1 AND srd.`question_id`=:questionId");
         parameter.put("questionId", questionId);
-        List<RecordDetailVo> recordDetailVoList = recordDetailVoDao.findBySqlForVo(sql.toString(), parameter, RecordDetailVo.class);
+        List<RecordDetailVo> recordDetailVoList = surveyDao.findBySqlForVo(sql.toString(), parameter, RecordDetailVo.class);
 
         for (AnswerVo answerVo : answerVoList) {
             int answerCount = 0;
@@ -227,7 +211,7 @@ public class SurveyManager extends EntityManager<Survey, Integer> {
         }
         sql.append(" GROUP BY a.`realname`,a.`user_type`,a.`sex`,b.`survey_time`,b.`status`,b.`score`,b.`id`) z ORDER BY z.id \n");
         parameter.put("surveyId",surveyId);
-        Page<RecordVo> mapList = recordVoDao.findBySqlForVo(page,sql.toString(),parameter,RecordVo.class);
+        Page<RecordVo> mapList = surveyDao.findBySqlForVo(page,sql.toString(),parameter,RecordVo.class);
         logger.info("222");
         if (mapList != null) {
             return mapList;
@@ -279,4 +263,5 @@ public class SurveyManager extends EntityManager<Survey, Integer> {
         }
         return null;
     }
+
 }

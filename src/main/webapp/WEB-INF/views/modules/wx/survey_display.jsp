@@ -100,7 +100,6 @@
 <script src="${ctxStatic}/app/modules/dlfm/js/survey.js?v=${sysInitTime}" type="text/javascript"></script>
 <script>
     var surveyId = "${survey.id}";
-    var userid = "${userid}";
 </script>
 </body>
 </html>

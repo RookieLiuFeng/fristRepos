@@ -1,10 +1,12 @@
 package com.sharewin.modules.wx.service;
 
 import com.sharewin.common.model.Result;
+import com.sharewin.common.orm.hibernate.Parameter;
 import com.sharewin.common.orm.jdbc.JdbcDao;
 import com.sharewin.common.utils.collections.Collections3;
 import com.sharewin.common.utils.encode.Encrypt;
 import com.sharewin.common.weixin.SNSUserInfo;
+import com.sharewin.modules.sys.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -66,5 +68,38 @@ public class WxDlfmManager {
             return users.get(0);
         }
         return null;
+    }
+
+    @Transactional(readOnly = false)
+    public Result updatePassword(int userid,String orgpassword,String newpassword){
+        Result result ;
+        Parameter parameter = new Parameter();
+        parameter.put("userid",userid);
+        parameter.put("password",Encrypt.md5(orgpassword));
+        String sql = "select * from user where id=:userid and password=:password";
+       //List<User> user = dao.queryForList(sql,parameter, User.class);
+        User user = (User) dao.queryForObject(sql,parameter, User.class);
+        if(user!=null){
+            parameter.clear();
+            parameter.put("userid",userid);
+            parameter.put("newpassword",Encrypt.md5(newpassword));
+            String updateSql = "update user set password=:newpassword where id=:userid";
+            dao.update(updateSql,parameter);
+            result = Result.successResult();
+        }else {
+            result = new Result();
+            result.setCode(2);
+            result.setMsg("原始密码错误!");
+        }
+        return result;
+    }
+
+    @Transactional(readOnly = false)
+    public Result removeBindWx(int userid){
+        Parameter parameter = new Parameter();
+        parameter.put("userid",userid);
+        String sql = "update wx_users set userid=null where userid=:userid";
+        dao.update(sql,parameter);
+        return Result.successResult();
     }
 }

@@ -300,7 +300,6 @@ public class ExportExcel<T> {
         color[2]=Integer.parseInt(str.substring(5, 7), 16);
         HSSFPalette palette = workbook.getCustomPalette();
         palette.setColorAtIndex(HSSFColor.BLACK.index,(byte)color[0], (byte)color[1], (byte)color[2]);
-
         HSSFFont font = workbook.createFont();
         font.setColor(HSSFColor.BLACK.index);
        // font.setFontHeightInPoints((short) 10);//设置字体大小
@@ -318,6 +317,7 @@ public class ExportExcel<T> {
         style.setBorderTop((short) 1);
         style.setFillForegroundColor(HSSFColor.LIGHT_TURQUOISE.index);    //填充的背景颜色
         style.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);    //填充图案
+        style.setVerticalAlignment(VerticalAlignment.CENTER);
         return style;
     }
 

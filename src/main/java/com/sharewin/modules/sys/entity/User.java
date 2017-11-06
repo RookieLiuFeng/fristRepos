@@ -51,6 +51,8 @@ public class User {
     private Date birthday;
     private Integer status;
     private Timestamp createTime;
+
+    @Excel(exportName="用户类型", exportFieldWidth = 15,importConvert = true,exportConvert = true)
     private Integer userType;
 
     private List<Role> roles = Lists.newArrayList();
@@ -259,4 +261,50 @@ public class User {
        }
        return "";
    }
+
+    public void convertSetUserType(String text){
+        int p = -1;
+        if(StringUtils.isNotEmpty(text)){
+            if(text.equals("学生")){
+                p = 0;
+            }else if(text.equals("家长")){
+                p=2;
+            }else if (text.equals("老师")){
+                p = 1;
+            }
+        }
+        this.userType = p;
+    }
+
+    public String convertGetUserType(){
+        String userTypeStr = "";
+        if(userType!=null){
+            if(userType == 0){
+                userTypeStr = "学生";
+            }else if(userType == 1){
+                userTypeStr =  "老师";
+            }else if(userType ==2){
+                userTypeStr = "家长";
+            }
+        }
+        return userTypeStr;
+    }
+
+    /**
+     * 类型描述.
+     */
+    @Transient
+    public String getUserTypeView() {
+        String userTypeStr = "";
+        if(userType!=null){
+            if(userType == 0){
+                userTypeStr = "学生";
+            }else if(userType == 1){
+                userTypeStr =  "老师";
+            }else if(userType ==2){
+                userTypeStr = "家长";
+            }
+        }
+        return userTypeStr;
+    }
 }

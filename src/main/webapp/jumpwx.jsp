@@ -8,5 +8,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/common/taglibs.jsp" %>
 <script type="text/javascript">
-    top.location.href = "${ctxfront}/index/welcome";
+    top.location.href = "${ctxfront}/mycenter";
 </script>

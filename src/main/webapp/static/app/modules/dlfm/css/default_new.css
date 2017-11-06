@@ -1,5 +1,4 @@
 * {
-    -webkit-user-select: none;
     outline: 0;
     -webkit-tap-highlight-color: transparent;
 }
@@ -485,4 +484,8 @@ a {
     height: 14px;
     vertical-align: -.25ex;
     fill: currentColor;
+}
+
+.pl10{
+    padding-left: 10px;
 }

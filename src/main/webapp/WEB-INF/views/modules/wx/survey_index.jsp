@@ -18,7 +18,7 @@
 <body ontouchstart>
 <div class="module module-nomargin">
     <c:forEach var="survey" items="${surveys}">
-        <a href="${ctxfront}/survey/${survey.id}?userid=${userid}" class="module-cell survey-cell btmline">
+        <a href="${ctxfront}/survey/${survey.id}" class="module-cell survey-cell btmline">
             <p class="module-signtext">${survey.surveyName}</p>
         </a>
     </c:forEach>

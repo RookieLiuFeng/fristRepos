@@ -137,6 +137,7 @@ public class WxLoginController {
                     model.addAttribute("openid", snsUserInfo.getOpenid());
                     return "modules/wx/binduser";
                 } else {
+                    SecurityUtils.putUserToSession(request, userManager.getById(userid));
                     model.addAttribute("user", wxDlfmManager.getUsers(userid));
                     return "modules/wx/mycenter";
                 }
@@ -150,9 +151,12 @@ public class WxLoginController {
     @RequestMapping(value = "binduser.json", method = RequestMethod.POST)
     @ResponseBody
     @RequiresUser(required = false)
-    public Result bindUser(String account, String password, String openid) {
-
-        return wxDlfmManager.bindUserAccount(openid, account, password);
+    public Result bindUser(HttpServletRequest request,String account, String password, String openid) {
+        Result result = wxDlfmManager.bindUserAccount(openid, account, password);
+        if(result.getCode()==1){
+            SecurityUtils.putUserToSession(request, userManager.getById(Integer.parseInt(result.getObj().toString())));
+        }
+        return result;
     }
 
     @RequestMapping(value = "binduser")
