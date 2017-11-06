@@ -11,7 +11,7 @@
                    data-options="required:true,missingMessage:'请输入期刊名称.',validType:['minLength[1]']"/>
         </div>
 
-        <div>
+        <div style="display: none;">
             <label>类型:</label>
             <label style="text-align: left;width: 60px;">
                 <input type="radio" name="periodType" style="width: 20px;" value="0" /> 新书
